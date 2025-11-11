@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deriv Analysis Terminal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="terminal-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>DERIV ANALYSIS <span class="sub-title">TERMINAL</span></h1>
+                <div class="status-indicator" id="connStatus">OFFLINE</div>
+            </div>
+            <div class="account-info">
+                <span id="accountId">SYSTEM OFFLINE</span>
+            </div>
+        </header>
+
+        <!-- Main Grid -->
+        <div class="grid-container">
+            <!-- Connection Panel -->
+            <section class="card connect-panel">
+                <h2><span class="icon">🔌</span> ACCESS CONTROL</h2>
+                <div class="input-group">
+                    <input type="password" id="token" placeholder="Enter Deriv API Token">
+                    <button id="btnConnect" class="primary">CONNECT</button>
+                </div>
+                <p class="info-text">Token is required for historical data access.</p>
+            </section>
+
+            <!-- Analysis Controls -->
+            <section class="card controls-panel">
+                <h2><span class="icon">⚙️</span> ANALYSIS PARAMETERS</h2>
+                <div class="control-group">
+                    <div class="control-row">
+                        <label for="marketSelect">MARKET</label>
+                        <select id="marketSelect">
+                            <option value="R_100">Volatility 100 Index</option>
+                            <option value="R_75">Volatility 75 Index</option>
+                            <option value="R_50">Volatility 50 Index</option>
+                            <option value="R_25">Volatility 25 Index</option>
+                            <option value="R_10">Volatility 10 Index</option>
+                        </select>
+                    </div>
+
+                    <div class="control-row">
+                        <label for="contractType">CONTRACT TYPE</label>
+                        <select id="contractType">
+                            <option value="RISE_FALL">RISE / FALL</option>
+                            <option value="MATCHES_DIFFERS">MATCHES / DIFFERS</option>
+                            <option value="OVER_UNDER">OVER / UNDER</option>
+                            <option value="EVEN_ODD">EVEN / ODD</option>
+                        </select>
+                    </div>
+
+                    <div class="control-row" id="digitRow" style="display: none;">
+                        <label for="targetDigit">TARGET DIGIT (0-9)</label>
+                        <input type="number" id="targetDigit" min="0" max="9" value="5">
+                    </div>
+
+                    <div class="control-row">
+                        <label for="tickCount">TICKS FOR ANALYSIS</label>
+                        <input type="number" id="tickCount" min="100" max="5000" step="100" value="1000">
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button id="btnAnalyze" class="primary">RUN ANALYSIS</button>
+                </div>
+            </section>
+
+            <!-- Analysis Results -->
+            <section class="card results-panel">
+                <h2><span class="icon">📊</span> PROBABILITY MATRIX</h2>
+                <div class="results-matrix" id="resultsMatrix">
+                    <p class="placeholder">Connect and run analysis to view results.</p>
+                </div>
+            </section>
+
+            <!-- Terminal Logs -->
+            <section class="card logs-panel">
+                <h2><span class="icon">📝</span> SYSTEM LOG</h2>
+                <div class="log-box" id="logBox">
+                    <div class="log-entry">[SYSTEM] Deriv Analysis Terminal Initialized.</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

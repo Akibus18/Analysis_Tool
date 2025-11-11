@@ -1,0 +1,328 @@
+:root {
+    --bg-dark: #0a0a0a;
+    --card-bg: #1a1a1a;
+    --card-border: #333333;
+    --primary: #00ffff; /* Neon Cyan */
+    --primary-glow: rgba(0, 255, 255, 0.4);
+    --secondary: #ff00ff; /* Neon Magenta */
+    --secondary-glow: rgba(255, 0, 255, 0.4);
+    --danger: #ff4500; /* Neon Orange/Red */
+    --success: #00ff7f; /* Neon Spring Green */
+    --text: #e0ffff;
+    --text-secondary: #aaaaaa;
+    --font-main: "Share Tech Mono", monospace;
+    --font-tech: "Orbitron", sans-serif;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-dark);
+    color: var(--text);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+    /* Cyberpunk Scanline Effect */
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px);
+    background-size: 100% 2px, 2px 100%;
+}
+
+.terminal-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 20px var(--primary-glow);
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.logo h1 {
+    font-family: var(--font-tech);
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary-glow);
+}
+
+.logo .sub-title {
+    font-size: 1.2rem;
+    color: var(--secondary);
+    text-shadow: 0 0 8px var(--secondary-glow);
+}
+
+.status-indicator {
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    display: inline-block;
+    margin-top: 5px;
+    box-shadow: 0 0 5px rgba(255, 69, 0, 0.5);
+}
+
+.status-indicator.connected {
+    border-color: var(--success);
+    color: var(--success);
+    box-shadow: 0 0 5px rgba(0, 255, 127, 0.5);
+}
+
+.account-info {
+    text-align: right;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 0; /* Sharp edges for cyberpunk */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+.card h2 {
+    font-family: var(--font-tech);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 0 0 5px var(--secondary-glow);
+}
+
+/* Inputs and Buttons */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+input[type="password"],
+input[type="number"],
+select {
+    padding: 10px;
+    border: 1px solid var(--primary);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--primary);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    flex-grow: 1;
+    outline: none;
+    transition: var(--transition);
+    box-shadow: inset 0 0 5px var(--primary-glow);
+}
+
+input:focus,
+select:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 10px var(--secondary-glow);
+}
+
+button {
+    padding: 10px 15px;
+    border: 1px solid var(--primary);
+    border-radius: 0;
+    cursor: pointer;
+    font-family: var(--font-tech);
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: var(--transition);
+    white-space: nowrap;
+    letter-spacing: 1px;
+    background: rgba(0, 255, 255, 0.1);
+    color: var(--primary);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+button.primary:hover:not(:disabled) {
+    background: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.control-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.control-row label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-family: var(--font-main);
+}
+
+.control-row input,
+.control-row select {
+    width: 150px;
+    text-align: right;
+}
+
+.btn-group {
+    margin-top: 20px;
+}
+
+/* Results Panel */
+.results-panel {
+    grid-column: span 2;
+}
+
+.results-matrix {
+    min-height: 150px;
+    padding: 10px;
+    border: 1px solid var(--secondary);
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px var(--secondary-glow);
+}
+
+.placeholder {
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 50px 0;
+}
+
+.analysis-result {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px dashed var(--card-border);
+}
+
+.analysis-result:last-child {
+    border-bottom: none;
+}
+
+.result-header {
+    font-family: var(--font-tech);
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.result-data {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.result-data span {
+    padding: 5px 10px;
+    border: 1px solid var(--card-border);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.win-prob {
+    color: var(--success);
+    text-shadow: 0 0 5px var(--success);
+}
+
+.loss-prob {
+    color: var(--danger);
+    text-shadow: 0 0 5px var(--danger);
+}
+
+/* Logs Panel - Terminal Look */
+.logs-panel {
+    grid-column: span 2;
+}
+
+.log-box {
+    height: 200px;
+    overflow-y: auto;
+    background: #000000; /* Pure black for terminal */
+    border: 1px solid var(--success); /* Neon border */
+    padding: 10px;
+    font-size: 0.9rem;
+    font-family: var(--font-main);
+    white-space: pre-wrap;
+    box-shadow: inset 0 0 10px rgba(0, 255, 127, 0.3);
+}
+
+.log-entry {
+    margin-bottom: 5px;
+    line-height: 1.2;
+    text-shadow: 0 0 1px currentColor; /* Subtle CRT effect */
+}
+
+.log-entry.info {
+    color: var(--text);
+}
+
+.log-entry.success {
+    color: var(--success);
+}
+
+.log-entry.error {
+    color: var(--danger);
+}
+
+.log-entry.warn {
+    color: var(--secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .account-info {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .control-row input,
+    .control-row select {
+        width: 100%;
+        margin-top: 5px;
+    }
+}

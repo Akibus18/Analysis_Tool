@@ -1,0 +1,19 @@
+{
+  "name": "deriv-analysis-terminal",
+  "version": "1.0.0",
+  "description": "A Cyberpunk-themed analysis tool for Deriv/Binary.com to calculate historical probabilities for various contract types.",
+  "main": "script.js",
+  "scripts": {
+    "start": "echo 'Open index.html in your browser to run the analysis terminal.'"
+  },
+  "keywords": [
+    "deriv",
+    "binary",
+    "trading",
+    "analysis",
+    "websocket",
+    "cyberpunk"
+  ],
+  "author": "",
+  "license": "MIT"
+}
